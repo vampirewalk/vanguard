@@ -24,7 +24,11 @@ func TestRecognize(t *testing.T) {
 
 	expectedTexts := []string{"AT", "All", "TIME", "PARKING", "PROHIBITED", "DOUBLE", "NOTICE"}
 
-	texts := Recognize(img)
+	texts, err := Recognize(img)
+	if err != nil {
+		t.Error(err.Error())
+	}
+
 	if reflect.DeepEqual(expectedTexts, texts) {
 		t.Log("Test passed")
 	} else {

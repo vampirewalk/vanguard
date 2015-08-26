@@ -10,27 +10,27 @@ import (
 	"image/png"
 )
 
-func Recognize(img image.Image) (texts []string) {
+func Recognize(img image.Image) (texts []string, err error) {
 	recognizer := NewTextRecognizer()
 
 	buf := new(bytes.Buffer)
-	err := png.Encode(buf, img)
+	err = png.Encode(buf, img)
 	if err != nil {
-		return nil
+		return nil, err
 	}
 
-	imgBytes := NewByteVector()
+	imgByteVector := NewByteVector()
 	imgByteArray := buf.Bytes()
 	for index := 0; index < len(imgByteArray); index++ {
-		imgBytes.Add(imgByteArray[index])
+		imgByteVector.Add(imgByteArray[index])
 	}
-	words := recognizer.Recognize(imgBytes)
+	words := recognizer.Recognize(imgByteVector)
 	for index := 0; index < int(words.Size()); index++ {
 		texts = append(texts, string(words.Get(index)))
 	}
 
-	DeleteByteVector(imgBytes)
+	DeleteByteVector(imgByteVector)
 	DeleteTextRecognizer(recognizer)
 
-	return texts
+	return texts, nil
 }
