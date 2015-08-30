@@ -1,4 +1,4 @@
-## gocrtext
+## gocvtext
 ![image](./scenetext01.jpg)
 
 Automatically detect and recognize text in natural images.
@@ -34,7 +34,7 @@ Install pkg-config
 brew install pkg-config
 ```
 
-Install gocrtext package
+Install gocvtext package
 
 ```
 go get github.com/vampirewalk/gocvtext
