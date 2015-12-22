@@ -1,0 +1,20 @@
+{
+	"ImportPath": "github.com/vampirewalk/slackbot",
+	"GoVersion": "go1.5",
+	"Deps": [
+		{
+			"ImportPath": "github.com/mvdan/xurls",
+			"Comment": "v0.8.0-10-g3a43cc7",
+			"Rev": "3a43cc764aca9dc4eb4b0581938b6b58934b58f9"
+		},
+		{
+			"ImportPath": "github.com/nlopes/slack",
+			"Comment": "v0.0.1-69-g9153359",
+			"Rev": "9153359e4c6e3dd6fecd68332164321b5efd543f"
+		},
+		{
+			"ImportPath": "golang.org/x/net/websocket",
+			"Rev": "6c89489cafabcbc76df9dbf84ebf07204673fecf"
+		}
+	]
+}
