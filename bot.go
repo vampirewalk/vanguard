@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"regexp"
+	"strconv"
 )
 
 type Bot struct {
@@ -58,6 +59,6 @@ func (b *Bot) GetRepoState(user string, repoName string) (repo Repository, err e
 }
 
 func (b *Bot) ReportRepoState(repo Repository) string {
-	state := string("Language: " + repo.Language + "\nStar: " + string(repo.StargazersCount) + "\nOpen issues: " + string(repo.OpenIssuesCount) + "\n")
+	state := string("Language: " + repo.Language + "\nStar: " + strconv.Itoa(repo.StargazersCount) + "\nOpen issues: " + strconv.Itoa(repo.OpenIssuesCount) + "\n")
 	return state
 }
