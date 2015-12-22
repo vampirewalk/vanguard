@@ -40,7 +40,7 @@ Loop:
 						rtm.SendMessage(rtm.NewOutgoingMessage("URL error", ev.Channel))
 					}
 					results := strings.Split(u.Path, "/")
-					state, err := bot.GetRepoState(results[2])
+					state, err := bot.GetRepoState(results[1], results[2])
 					if err != nil {
 						log.Printf("Parse error")
 						rtm.SendMessage(rtm.NewOutgoingMessage("Parse error", ev.Channel))

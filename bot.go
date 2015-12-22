@@ -35,8 +35,8 @@ func (b *Bot) ExtractGithubRepoURL(text string) string {
 	return xurls.Strict.FindString(text)
 }
 
-func (b *Bot) GetRepoState(repoName string) (repo Repository, err error) {
-	resp, err := http.Get("https://api.github.com/repos/" + repoName)
+func (b *Bot) GetRepoState(user string, repoName string) (repo Repository, err error) {
+	resp, err := http.Get("https://api.github.com/repos/" + user + "/" + repoName)
 	if err != nil {
 		// handle error
 		return Repository{}, err
@@ -58,6 +58,6 @@ func (b *Bot) GetRepoState(repoName string) (repo Repository, err error) {
 }
 
 func (b *Bot) ReportRepoState(repo Repository) string {
-	state := string("language: " + repo.Language + "\nstar: " + string(repo.StargazersCount) + "\nopen issues: " + string(repo.OpenIssuesCount) + "\n")
+	state := string("Language: " + repo.Language + "\nStar: " + string(repo.StargazersCount) + "\nOpen issues: " + string(repo.OpenIssuesCount) + "\n")
 	return state
 }
