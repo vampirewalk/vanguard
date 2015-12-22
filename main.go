@@ -35,14 +35,17 @@ Loop:
 					log.Printf("Received message \"%s\" from %s", ev.Msg.Text, ev.Msg.User)
 					u, err := url.Parse(repoURL)
 					if err != nil {
-						rtm.SendMessage(rtm.NewOutgoingMessage("url error", ev.Channel))
+						log.Printf("URL error")
+						rtm.SendMessage(rtm.NewOutgoingMessage("URL error", ev.Channel))
 					}
 					results := strings.Split(u.Path, "/")
 					state, err := bot.GetRepoState(results[2])
 					if err != nil {
+						log.Printf("Parse error")
 						rtm.SendMessage(rtm.NewOutgoingMessage("Parse error", ev.Channel))
 					}
 					report := bot.ReportRepoState(state)
+					log.Printf(report)
 					rtm.SendMessage(rtm.NewOutgoingMessage(report, ev.Channel))
 				}
 
