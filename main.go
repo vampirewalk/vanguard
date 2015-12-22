@@ -31,6 +31,7 @@ Loop:
 			case *slack.MessageEvent:
 				// if msg contains github url
 				repoURL := bot.ExtractGithubRepoURL(ev.Msg.Text)
+				log.Printf(repoURL)
 				if repoURL != "" && !bot.IsMe(ev.Msg.User) {
 					log.Printf("Received message \"%s\" from %s", ev.Msg.Text, ev.Msg.User)
 					u, err := url.Parse(repoURL)
