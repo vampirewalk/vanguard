@@ -17,7 +17,7 @@ func main() {
 	api := slack.New(token)
 	channels, err := api.GetChannels(true)
 	if err != nil {
-		log.Fatal("Failed to get channels")
+		log.Print("Failed to get channels")
 	}
 	for _, channel := range channels {
 		if !channel.IsMember {
