@@ -15,6 +15,15 @@ func main() {
 	}
 
 	api := slack.New(token)
+	channels, err := api.GetChannels(true)
+	if err != nil {
+		log.Fatal("Failed to get channels")
+	}
+	for _, channel := range channels {
+		if !channel.IsMember {
+			api.JoinChannel(channel.ID)
+		}
+	}
 	bot := Bot{}
 
 	rtm := api.NewRTM()
