@@ -21,7 +21,7 @@ func main() {
 	}
 	for _, channel := range channels {
 		if !channel.IsMember {
-			api.JoinChannel(channel.ID)
+			api.JoinChannel(channel.Name)
 		}
 	}
 	bot := Bot{}
