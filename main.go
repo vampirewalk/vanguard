@@ -3,7 +3,6 @@ package main
 import (
 	"github.com/vampirewalk/slackbot/Godeps/_workspace/src/github.com/nlopes/slack"
 	"log"
-	"net/url"
 	"os"
 	"strings"
 )
@@ -15,15 +14,6 @@ func main() {
 	}
 
 	api := slack.New(token)
-	channels, err := api.GetChannels(true)
-	if err != nil {
-		log.Print("Failed to get channels")
-	}
-	for _, channel := range channels {
-		if !channel.IsMember {
-			api.JoinChannel(channel.Name)
-		}
-	}
 	bot := Bot{}
 
 	rtm := api.NewRTM()
@@ -40,19 +30,12 @@ Loop:
 			case *slack.MessageEvent:
 				// if msg contains github url
 				repoURL := bot.ExtractGithubRepoURL(ev.Msg.Text)
-				log.Printf(repoURL)
-				if repoURL != "" && !bot.IsMe(ev.Msg.User) {
+				if repoURL != "" && strings.Contains(repoURL, "github.com") && !bot.IsMe(ev.Msg.User) {
 					log.Printf("Received message \"%s\" from %s", ev.Msg.Text, ev.Msg.User)
-					u, err := url.Parse(repoURL)
-					if err != nil {
-						log.Printf("URL error")
-						rtm.SendMessage(rtm.NewOutgoingMessage("URL error", ev.Channel))
-					}
-					results := strings.Split(u.Path, "/")
-					state, err := bot.GetRepoState(results[1], results[2])
+					user, repoName := bot.ParseRepoFormat(repoURL)
+					state, err := bot.GetRepoState(user, repoName)
 					if err != nil {
 						log.Printf("Parse error")
-						rtm.SendMessage(rtm.NewOutgoingMessage("Parse error", ev.Channel))
 					}
 					report := bot.ReportRepoState(state)
 					log.Printf(report)

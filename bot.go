@@ -7,8 +7,10 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"net/url"
 	"regexp"
 	"strconv"
+	"strings"
 )
 
 type Bot struct {
@@ -34,6 +36,15 @@ func (b *Bot) AmIMentioned(text string) bool {
 
 func (b *Bot) ExtractGithubRepoURL(text string) string {
 	return xurls.Strict.FindString(text)
+}
+
+func (b *Bot) ParseRepoFormat(repoURL string) (user string, repoName string) {
+	u, err := url.Parse(repoURL)
+	if err != nil {
+		log.Printf("URL error")
+	}
+	results := strings.Split(u.Path, "/")
+	return results[1], results[2]
 }
 
 func (b *Bot) GetRepoState(user string, repoName string) (repo Repository, err error) {
