@@ -7,7 +7,7 @@ import (
 )
 
 func TestExtractURL(t *testing.T) {
-	s := "pousdnfsadlmgf\n<https://github.com/nlopes/slack>"
+	s := "Slackbot\n<https://github.com/nlopes/slack>"
 	bot := Bot{}
 	url := bot.ExtractGithubRepoURL(s)
 	expectedURL := "https://github.com/nlopes/slack"
@@ -36,5 +36,18 @@ func TestGetRepoState(t *testing.T) {
 	}
 	if state.Language == "" {
 		t.Errorf("Empty state")
+	}
+}
+
+func TestReportRepoState(t *testing.T) {
+	repo := Repository{}
+	repo.Language = "Go"
+	repo.StargazersCount = 267
+	repo.OpenIssuesCount = 5
+
+	bot := Bot{}
+	report := bot.ReportRepoState(repo)
+	if report != "Language: Go\nStar: 267\nOpen issues: 5\n" {
+		t.Errorf("report error")
 	}
 }
