@@ -11,7 +11,7 @@ import (
 	"os"
 	"regexp"
 
-	"github.com/vampirewalk/slackbot/Godeps/_workspace/src/github.com/mvdan/xurls"
+	"github.com/vampirewalk/vanguard/Godeps/_workspace/src/github.com/mvdan/xurls"
 )
 
 var (

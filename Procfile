@@ -1,1 +1,1 @@
-worker: slackbot
+worker: vanguard

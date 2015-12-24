@@ -1,5 +1,5 @@
 {
-	"ImportPath": "github.com/vampirewalk/slackbot",
+	"ImportPath": "github.com/vampirewalk/vanguard",
 	"GoVersion": "go1.5",
 	"Deps": [
 		{

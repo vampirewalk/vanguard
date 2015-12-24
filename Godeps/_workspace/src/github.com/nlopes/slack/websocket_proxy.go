@@ -10,7 +10,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/vampirewalk/slackbot/Godeps/_workspace/src/golang.org/x/net/websocket"
+	"github.com/vampirewalk/vanguard/Godeps/_workspace/src/golang.org/x/net/websocket"
 )
 
 // Taken and reworked from: https://gist.github.com/madmo/8548738

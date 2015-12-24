@@ -7,7 +7,7 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/vampirewalk/slackbot/Godeps/_workspace/src/golang.org/x/net/websocket"
+	"github.com/vampirewalk/vanguard/Godeps/_workspace/src/golang.org/x/net/websocket"
 )
 
 // ManageConnection can be called on a Slack RTM instance returned by the

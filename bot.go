@@ -2,8 +2,8 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/vampirewalk/slackbot/Godeps/_workspace/src/github.com/mvdan/xurls"
-	"github.com/vampirewalk/slackbot/Godeps/_workspace/src/github.com/nlopes/slack"
+	"github.com/vampirewalk/vanguard/Godeps/_workspace/src/github.com/mvdan/xurls"
+	"github.com/vampirewalk/vanguard/Godeps/_workspace/src/github.com/nlopes/slack"
 	"io/ioutil"
 	"log"
 	"net/http"

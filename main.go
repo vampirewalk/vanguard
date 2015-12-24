@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/vampirewalk/slackbot/Godeps/_workspace/src/github.com/nlopes/slack"
+	"github.com/vampirewalk/vanguard/Godeps/_workspace/src/github.com/nlopes/slack"
 	"log"
 	"os"
 	"strings"
