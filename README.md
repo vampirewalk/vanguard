@@ -31,5 +31,5 @@ $ heroku create
 $ heroku config:set SLACK_TOKEN=YOUR_REAL_TOKEN
 $ git push heroku master
 ```
-* [Invite bot to channel.](https://get.slack.help/hc/en-us/articles/201980108-Inviting-team-members-to-a-channel) Your bot has been named in creating integration step.
+* [Invite bot to channel.](https://get.slack.help/hc/en-us/articles/201980108-Inviting-team-members-to-a-channel) Your bot has been named at creating integration step.
 
